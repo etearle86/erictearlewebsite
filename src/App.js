@@ -9,16 +9,16 @@ const App = () => {
 
     console.log(isMobileView);
 
-    return (
-        <div className='App_wrapper'>
-            {isMobileView ? (
-                <MainMobile images={featuredImages} />
-            ) : (
-                <Main images={featuredImages} />
-            )}
-            <Footer numImages={featuredImages.length} />
-        </div>
-    );
+ return (
+    <div className='App_wrapper'>
+        <Footer numImages={featuredImages.length} />
+        {isMobileView ? (
+            <MainMobile images={featuredImages} />
+        ) : (
+            <Main images={featuredImages} />
+        )}
+    </div>
+);
 };
 
 export default App;
