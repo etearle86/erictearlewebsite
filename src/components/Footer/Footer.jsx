@@ -40,7 +40,7 @@ const Footer = ({ numImages }) => {
 
     return (
         <div className='Footer_wrapper'>
-            <div className='Footer_name'>Bridget Baker Clone</div>
+            <div className='Footer_name'>Eric Tearle</div>
             <div className='Footer_categoryWrapper'>
                 {CATEGORIES.map((cat, idx) => {
                     let isSelected = cat === category;
