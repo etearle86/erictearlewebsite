@@ -36,7 +36,7 @@ const Main = ({ images }) => {
 
     if (distX > threshold || distY > threshold) {
         // If moving fast, clear the trail entirely
-        if (distX > threshold * 2 || distY > threshold * 2) {
+        if (distX > threshold * 3 || distY > threshold * 2) {
             setImagesWindow([]);
             setPositions([{ x: 0, y: 0 }]);
         }
