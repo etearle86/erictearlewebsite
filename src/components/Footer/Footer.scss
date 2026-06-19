@@ -28,15 +28,21 @@
     }
   }
 
-  .Footer_threshold {
+.Footer_threshold {
+    background-color: #F5C400;
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 4px;
+
     button {
-      border: none;
-      background-color: transparent;
-      margin: 0;
-      padding: 0 16px;
-      cursor: pointer;
+        border: none;
+        background-color: transparent;
+        color: #fff;
+        margin: 0;
+        padding: 0 16px;
+        cursor: pointer;
     }
-  }
+
 
   .Footer_imageIndex {
     min-width: 200px;
