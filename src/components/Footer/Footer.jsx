@@ -31,7 +31,7 @@ const Footer = ({ numImages }) => {
     };
 
     const handleAddClick = () => {
-        if (threshold >= 200) return;
+        if (threshold >= 280) return;
 
         setThreshold((prevState) => {
             return prevState + 40;
