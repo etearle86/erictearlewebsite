@@ -1,49 +1,43 @@
-import React, { useState } from 'react';
-import './Overlay.scss';
+.Overlay_wrapper {
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    cursor: none;
 
-const Overlay = ({ handlePrevClick, handleCloseClick, handleNextClick }) => {
-    const [currCursorPos, setCurrCursorPos] = useState({ x: 0, y: 0 });
+    section {
+        width: 100%;
+        height: 100%;
+    }
 
-    const handleMouseMove = (ev) => {
-        let posX = ev.clientX;
-        let posY = ev.clientY;
-        setCurrCursorPos({
-            x: posX,
-            y: posY,
-        });
-    };
+    .Overlay_cursor {
+        position: absolute;
+        left: var(--left);
+        top: var(--top);
+        translate: -50% -110%;
+        user-select: none;
+        font-size: 24px;
+        letter-spacing: 2px;
+        font-weight: bold;
+        color: #fff;
+        background-color: red;
+        padding: 4px 12px;
+        border-radius: 4px;
+        -webkit-text-stroke: 0px;
+    }
 
-    return (
-        <div className='Overlay_wrapper' onMouseMove={handleMouseMove}>
-            <section className='prev_section' onClick={handlePrevClick}>
-                <div
-                    className='Overlay_cursor'
-                    style={{
-                        '--left': `${currCursorPos.x}px`,
-                        '--top': `${currCursorPos.y}px`,
-                    }}
-                />
-            </section>
-            <section className='close_section' onClick={handleCloseClick}>
-                <div
-                    className='Overlay_cursor'
-                    style={{
-                        '--left': `${currCursorPos.x}px`,
-                        '--top': `${currCursorPos.y}px`,
-                    }}
-                />
-            </section>
-            <section className='next_section' onClick={handleNextClick}>
-                <div
-                    className='Overlay_cursor'
-                    style={{
-                        '--left': `${currCursorPos.x}px`,
-                        '--top': `${currCursorPos.y}px`,
-                    }}
-                />
-            </section>
-        </div>
-    );
-};
-
-export default Overlay;
+    .prev_section:hover > .Overlay_cursor::after {
+        content: '←';
+    }
+    .close_section:hover > .Overlay_cursor::after {
+        content: '✕';
+    }
+    .next_section:hover > .Overlay_cursor::after {
+        content: '→';
+    }
+}
