@@ -50,7 +50,7 @@ const Main = ({ images }) => {
     // FIFO array of images to show (shows 5 images)
     const getImagesWindow = (index) => {
         let newImagesWindow = [...imagesWindow];
-        if (newImagesWindow.length >= 5) {
+        if (newImagesWindow.length >= 3) {
             newImagesWindow.pop();
         }
         newImagesWindow.unshift(index);
@@ -60,7 +60,7 @@ const Main = ({ images }) => {
     // FIFO array for imagesWindow positions (5 positions for 5 images)
     const getImagesPositions = (latestPosition) => {
         let newImagesPositions = [...positions];
-        if (newImagesPositions.length >= 5) {
+        if (newImagesPositions.length >= 3) {
             newImagesPositions.pop();
         }
         newImagesPositions.unshift(latestPosition);
