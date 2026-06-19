@@ -27,35 +27,40 @@ const Main = ({ images }) => {
         getImagesPositions(latestCursorPosition);
     }, [latestCursorPosition]);
 
-    const handleMouseMove = (ev) => {
-        let posX = ev.clientX;
-        let posY = ev.clientY;
+   const handleMouseMove = (ev) => {
+    let posX = ev.clientX;
+    let posY = ev.clientY;
 
-        if (
-            Math.abs(latestCursorPosition.x - posX) > threshold ||
-            Math.abs(latestCursorPosition.y - posY) > threshold
-        ) {
-            // to know which image we are currently on (also for footer)
-            setCurrImgIdx((prevState) => {
-                return (prevState + 1) % images.length;
-            });
+    const distX = Math.abs(latestCursorPosition.x - posX);
+    const distY = Math.abs(latestCursorPosition.y - posY);
 
-            setLatestCursorPosition({
-                x: posX,
-                y: posY,
-            });
+    if (distX > threshold || distY > threshold) {
+        // If moving fast, clear the trail entirely
+        if (distX > threshold * 2 || distY > threshold * 2) {
+            setImagesWindow([]);
+            setPositions([{ x: 0, y: 0 }]);
         }
-    };
+
+        setCurrImgIdx((prevState) => {
+            return (prevState + 1) % images.length;
+        });
+
+        setLatestCursorPosition({
+            x: posX,
+            y: posY,
+        });
+    }
+};
 
     // FIFO array of images to show (shows 5 images)
-    const getImagesWindow = (index) => {
+    function getImagesWindow(index) {
         let newImagesWindow = [...imagesWindow];
         if (newImagesWindow.length >= 3) {
             newImagesWindow.pop();
         }
         newImagesWindow.unshift(index);
         setImagesWindow(newImagesWindow);
-    };
+    }
 
     // FIFO array for imagesWindow positions (5 positions for 5 images)
     const getImagesPositions = (latestPosition) => {
