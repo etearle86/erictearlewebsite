@@ -14,9 +14,18 @@
   user-select: none;
 
   .Footer_name {
+    background-color: blue;
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 4px;
   }
 
   .Footer_categoryWrapper {
+    background-color: red;
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 4px;
+
     .Footer_category {
       cursor: pointer;
     }
