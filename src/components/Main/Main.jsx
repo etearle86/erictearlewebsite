@@ -125,7 +125,7 @@ const Main = ({ images }) => {
                         }
                     >
                         {currImgIdx >= 0 && (
-                            <img src={images[imageIdx]} alt='' />
+                            <img src={images[imageIdx]} alt='' loading='lazy' />
                         )}
                     </div>
                 );
