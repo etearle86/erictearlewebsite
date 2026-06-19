@@ -1,9 +1,9 @@
-const imageModules = import.meta.glob('../images/featured/*.{jpeg,jpg,png,webp}', { eager: true });
+const context = require.context('../images/featured', false, /\.(jpeg|jpg|png|webp)$/);
 
-export const featuredImages = Object.keys(imageModules)
+export const featuredImages = context.keys()
     .sort((a, b) => {
         const numA = parseInt(a.match(/(\d+)\./)?.[1]);
         const numB = parseInt(b.match(/(\d+)\./)?.[1]);
         return numA - numB;
     })
-    .map((key) => imageModules[key].default);
+    .map((key) => context(key));
