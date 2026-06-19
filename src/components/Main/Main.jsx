@@ -13,11 +13,14 @@ const Main = ({ images }) => {
     } = useAppContext();
 
     const [latestCursorPosition, setLatestCursorPosition] = useState({
-        x: 0,
-        y: 0,
+        x: window.innerWidth / 2,
+        y: window.innerHeight / 2,
     });
-    const [positions, setPositions] = useState([{ x: 0, y: 0 }]);
-    const [imagesWindow, setImagesWindow] = useState([]);
+    const [positions, setPositions] = useState([{ 
+        x: window.innerWidth / 2, 
+        y: window.innerHeight / 2 
+    }]);
+    const [imagesWindow, setImagesWindow] = useState([0]);
 
     useEffect(() => {
         getImagesWindow(currImgIdx);
@@ -27,32 +30,30 @@ const Main = ({ images }) => {
         getImagesPositions(latestCursorPosition);
     }, [latestCursorPosition]);
 
-   const handleMouseMove = (ev) => {
-    let posX = ev.clientX;
-    let posY = ev.clientY;
+    const handleMouseMove = (ev) => {
+        let posX = ev.clientX;
+        let posY = ev.clientY;
 
-    const distX = Math.abs(latestCursorPosition.x - posX);
-    const distY = Math.abs(latestCursorPosition.y - posY);
+        const distX = Math.abs(latestCursorPosition.x - posX);
+        const distY = Math.abs(latestCursorPosition.y - posY);
 
-    if (distX > threshold || distY > threshold) {
-        // If moving fast, clear the trail entirely
-        if (distX > threshold * 3 || distY > threshold * 2) {
-            setImagesWindow([]);
-            setPositions([{ x: 0, y: 0 }]);
+        if (distX > threshold || distY > threshold) {
+            if (distX > threshold * 3 || distY > threshold * 2) {
+                setImagesWindow([]);
+                setPositions([{ x: 0, y: 0 }]);
+            }
+
+            setCurrImgIdx((prevState) => {
+                return (prevState + 1) % images.length;
+            });
+
+            setLatestCursorPosition({
+                x: posX,
+                y: posY,
+            });
         }
+    };
 
-        setCurrImgIdx((prevState) => {
-            return (prevState + 1) % images.length;
-        });
-
-        setLatestCursorPosition({
-            x: posX,
-            y: posY,
-        });
-    }
-};
-
-    // FIFO array of images to show (shows 5 images)
     function getImagesWindow(index) {
         let newImagesWindow = [...imagesWindow];
         if (newImagesWindow.length >= 5) {
@@ -62,7 +63,6 @@ const Main = ({ images }) => {
         setImagesWindow(newImagesWindow);
     }
 
-    // FIFO array for imagesWindow positions (5 positions for 5 images)
     const getImagesPositions = (latestPosition) => {
         let newImagesPositions = [...positions];
         if (newImagesPositions.length >= 5) {
@@ -72,7 +72,6 @@ const Main = ({ images }) => {
         setPositions(newImagesPositions);
     };
 
-    // Overlay onClick methods start
     const handlePrevClick = () => {
         setCurrImgIdx((prevState) => {
             return (prevState - 1) % images.length;
@@ -86,7 +85,6 @@ const Main = ({ images }) => {
             return (prevState + 1) % images.length;
         });
     };
-    // Overlay onClick methods ends
 
     return (
         <div
