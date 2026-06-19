@@ -4,21 +4,24 @@ import Main from './components/Main/Main';
 import { featuredImages } from './assets/data/featured-images';
 import MainMobile from './components/MainMobile/MainMobile';
 
+const shuffleArray = (array) => {
+    return [...array].sort(() => Math.random() - 0.5);
+};
+
 const App = () => {
     const isMobileView = window.innerWidth <= 767;
+    const images = shuffleArray(featuredImages);
 
-    console.log(isMobileView);
-
- return (
-    <div className='App_wrapper'>
-        <Footer numImages={featuredImages.length} />
-        {isMobileView ? (
-            <MainMobile images={featuredImages} />
-        ) : (
-            <Main images={featuredImages} />
-        )}
-    </div>
-);
+    return (
+        <div className='App_wrapper'>
+            <Footer numImages={images.length} />
+            {isMobileView ? (
+                <MainMobile images={images} />
+            ) : (
+                <Main images={images} />
+            )}
+        </div>
+    );
 };
 
 export default App;
