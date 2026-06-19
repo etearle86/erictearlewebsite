@@ -6,7 +6,7 @@ export const useAppContext = () => useContext(AppContext);
 
 export const AppContextProvider = ({ children }) => {
     const [category, setCategory] = useState('Featured');
-    const [threshold, setThreshold] = useState(80);
+    const [threshold, setThreshold] = useState(160);
     const [currImgIdx, setCurrImgIdx] = useState(-1);
     const [isImageSelected, setIsImageSelected] = useState(false);
 
