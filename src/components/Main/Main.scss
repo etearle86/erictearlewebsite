@@ -32,7 +32,7 @@
     }
 
     .currentImage {
-    transition: all 0.5s ease-in-out 1.5s;
+    transition: none;
     top: 50%;
     left: 50%;
     translate: -50% -50%;
@@ -40,7 +40,7 @@
     width: auto;
 
     img {
-        transition: all 0.5s ease-in-out 2s;
+        transition: none;
         height: 80vh;
         max-height: 80vh;
         width: auto;
