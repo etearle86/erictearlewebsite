@@ -31,12 +31,12 @@
     }
 
     .prev_section:hover > .Overlay_cursor::after {
-        content: '←';
-    }
-    .close_section:hover > .Overlay_cursor::after {
-        content: '✕';
-    }
-    .next_section:hover > .Overlay_cursor::after {
-        content: '→';
-    }
+    content: 'PREV';
+}
+.close_section:hover > .Overlay_cursor::after {
+    content: 'CLOSE';
+}
+.next_section:hover > .Overlay_cursor::after {
+    content: 'NEXT';
+}
 }
