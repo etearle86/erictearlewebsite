@@ -25,6 +25,10 @@
       cursor: pointer;
     }
 
+    .Footer_category:hover {
+      text-decoration: underline;
+    }
+
     .selected {
       text-decoration: underline;
       font-style: italic;
