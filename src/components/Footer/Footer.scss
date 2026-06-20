@@ -14,15 +14,18 @@
   user-select: none;
 
   .Footer_name {
-    background-color: blue;
-    color: #fff;
-    padding: 4px 16px;
-    margin-left: -16px;
+    color: #000;
+    cursor: pointer;
   }
 
   .Footer_categoryWrapper {
+    background-color: blue;
+    color: #fff;
+    padding: 4px 12px;
+
     .Footer_category {
       cursor: pointer;
+      color: #fff;
     }
 
     .Footer_category:hover {
