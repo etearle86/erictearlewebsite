@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import './GalleryPage.scss';
+import Overlay from '../Overlay/Overlay';
 
 const GalleryPage = ({ images }) => {
     const [selectedImage, setSelectedImage] = useState(null);
 
-    const handlePrev = (e) => {
-        e.stopPropagation();
+    const handlePrev = () => {
         setSelectedImage((prev) => (prev - 1 + images.length) % images.length);
     };
 
-    const handleNext = (e) => {
-        e.stopPropagation();
+    const handleNext = () => {
         setSelectedImage((prev) => (prev + 1) % images.length);
     };
 
@@ -21,11 +20,13 @@ const GalleryPage = ({ images }) => {
     return (
         <div className='GalleryPage_wrapper'>
             {selectedImage !== null && (
-                <div className='GalleryPage_lightbox' onClick={handleClose}>
-                    <button className='GalleryPage_prev' onClick={handlePrev}>←</button>
+                <div className='GalleryPage_lightbox'>
+                    <Overlay
+                        handlePrevClick={handlePrev}
+                        handleCloseClick={handleClose}
+                        handleNextClick={handleNext}
+                    />
                     <img src={images[selectedImage]} alt='' />
-                    <button className='GalleryPage_next' onClick={handleNext}>→</button>
-                    <button className='GalleryPage_close' onClick={handleClose}>✕</button>
                 </div>
             )}
             <div className='GalleryPage_grid'>
