@@ -1,7 +1,7 @@
 .GalleryPage_wrapper {
-  padding-top: 60px;
-  padding-left: 40px;
-  padding-right: 40px;
+  padding-top: 120px;
+  padding-left: 80px;
+  padding-right: 80px;
 
   .GalleryPage_grid {
     columns: 3;
@@ -48,8 +48,8 @@
 
 @media only screen and (max-width: 768px) {
   .GalleryPage_wrapper {
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 24px;
+    padding-right: 24px;
 
     .GalleryPage_grid {
       columns: 2;
