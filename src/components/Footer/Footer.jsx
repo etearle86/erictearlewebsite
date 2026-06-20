@@ -3,12 +3,7 @@ import './Footer.scss';
 import { useAppContext } from '../../context/AppContext';
 import { addZeroesInFront } from '../../utils/functions/functions';
 import { useNavigate, useLocation } from 'react-router-dom';
-
-const CATEGORIES = [
-    { label: 'iPhone', path: '/iphone' },
-    { label: 'Film', path: '/film' },
-    { label: 'Info', path: '/info' },
-];
+import { CATEGORIES } from '../../assets/data/categories';
 
 const Footer = ({ numImages }) => {
     const {
