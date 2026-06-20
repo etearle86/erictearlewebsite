@@ -18,14 +18,13 @@
     cursor: pointer;
   }
 
-  .Footer_categoryWrapper {
-    background-color: blue;
-    color: #fff;
-    padding: 4px 12px;
+  .Footer_name:hover {
+    text-decoration: underline;
+  }
 
+  .Footer_categoryWrapper {
     .Footer_category {
       cursor: pointer;
-      color: #fff;
     }
 
     .Footer_category:hover {
