@@ -5,7 +5,6 @@ import { addZeroesInFront } from '../../utils/functions/functions';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 const CATEGORIES = [
-    { label: 'Featured', path: '/' },
     { label: 'iPhone', path: '/iphone' },
     { label: 'Film', path: '/film' },
     { label: 'Info', path: '/info' },
