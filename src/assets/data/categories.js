@@ -1,5 +1,5 @@
 export const CATEGORIES = [
-    { label: 'work', path: '/work' },
+    { label: 'Work', path: '/Work' },
     { label: 'Film', path: '/film' },
     { label: 'Info', path: '/info' },
 ];
