@@ -100,6 +100,7 @@ const Main = ({ images }) => {
             )}
 
             {imagesWindow.map((imageIdx, idx) => {
+                if (!positions[idx]) return null;
                 let isCurrImg = idx === 0;
                 return (
                     <div
