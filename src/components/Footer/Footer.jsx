@@ -24,7 +24,7 @@ const Footer = ({ numImages }) => {
     };
 
     const handleTitleClick = () => {
-        setCurrImgIdx(-1);
+        setCurrImgIdx(0);
         setIsImageSelected(false);
         navigate('/');
     };
