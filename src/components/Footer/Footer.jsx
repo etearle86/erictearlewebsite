@@ -2,13 +2,17 @@ import React from 'react';
 import './Footer.scss';
 import { useAppContext } from '../../context/AppContext';
 import { addZeroesInFront } from '../../utils/functions/functions';
+import { useNavigate, useLocation } from 'react-router-dom';
 
-const CATEGORIES = ['Featured', 'iPhone', 'Film', 'Info'];
+const CATEGORIES = [
+    { label: 'Featured', path: '/' },
+    { label: 'iPhone', path: '/iphone' },
+    { label: 'Film', path: '/film' },
+    { label: 'Info', path: '/info' },
+];
 
 const Footer = ({ numImages }) => {
     const {
-        category,
-        setCategory,
         threshold,
         setThreshold,
         currImgIdx,
@@ -16,46 +20,48 @@ const Footer = ({ numImages }) => {
         setIsImageSelected,
     } = useAppContext();
 
-    const handleCategoryClick = (category) => {
-        setCategory(category);
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const handleCategoryClick = (path) => {
         setCurrImgIdx(-1);
         setIsImageSelected(false);
+        navigate(path);
+    };
+
+    const handleTitleClick = () => {
+        setCurrImgIdx(-1);
+        setIsImageSelected(false);
+        navigate('/');
     };
 
     const handleSubtractClick = () => {
         if (threshold <= 0) return;
-
-        setThreshold((prevState) => {
-            return prevState - 40;
-        });
+        setThreshold((prevState) => prevState - 40);
     };
 
     const handleAddClick = () => {
         if (threshold >= 280) return;
-
-        setThreshold((prevState) => {
-            return prevState + 40;
-        });
+        setThreshold((prevState) => prevState + 40);
     };
 
     return (
         <div className='Footer_wrapper'>
-            <div className='Footer_name'>Eric Tearle</div>
+            <div className='Footer_name' onClick={handleTitleClick} style={{ cursor: 'pointer' }}>
+                Eric Tearle
+            </div>
             <div className='Footer_categoryWrapper'>
                 {CATEGORIES.map((cat, idx) => {
-                    let isSelected = cat === category;
-
+                    const isSelected = location.pathname === cat.path;
                     return (
-                        <React.Fragment key={cat + idx}>
+                        <React.Fragment key={cat.label + idx}>
                             <span
-                                className={`Footer_category ${
-                                    isSelected && 'selected'
-                                }`}
-                                onClick={() => handleCategoryClick(cat)}
+                                className={`Footer_category ${isSelected ? 'selected' : ''}`}
+                                onClick={() => handleCategoryClick(cat.path)}
                             >
-                                {cat}
+                                {cat.label}
                             </span>
-                            {idx < 3 && ','}&nbsp;
+                            {idx < CATEGORIES.length - 1 && ','}&nbsp;
                         </React.Fragment>
                     );
                 })}
