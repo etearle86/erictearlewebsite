@@ -15,20 +15,17 @@
         height: 100%;
     }
 
-    .Overlay_cursor {
-        position: absolute;
-        left: var(--left);
-        top: var(--top);
-        translate: -50% -110%;
-        user-select: none;
-        font-size: 24px;
-        letter-spacing: 0px;
-        font-weight: bold;
-        color: #fff;
-        background-color: red;
-        padding: 4px 12px;
-        border-radius: 4px;
-    }
+   .Overlay_cursor {
+    position: absolute;
+    left: var(--left);
+    top: var(--top);
+    translate: -50% -110%;
+    user-select: none;
+    font-size: 24px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    color: #000;
+}
 
     .prev_section:hover > .Overlay_cursor::after {
     content: 'PREV';
