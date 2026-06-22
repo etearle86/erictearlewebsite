@@ -1,5 +1,5 @@
 import './App.scss';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Footer from './components/Footer/Footer';
 import Main from './components/Main/Main';
 import MainMobile from './components/MainMobile/MainMobile';
@@ -29,22 +29,33 @@ const PlaceholderPage = ({ title }) => (
     </div>
 );
 
+const galleryPaths = CATEGORIES.map((cat) => cat.path);
+
+const AppContent = () => {
+    const location = useLocation();
+    const isGallery = galleryPaths.includes(location.pathname);
+
+    return (
+        <div className={`App_wrapper${isGallery ? ' App_wrapper--gallery' : ''}`}>
+            <Footer numImages={images.length} />
+            <Routes>
+                <Route path='/' element={<FeaturedPage />} />
+                {CATEGORIES.map((cat) => (
+                    <Route
+                        key={cat.path}
+                        path={cat.path}
+                        element={<GalleryPage images={images} />}
+                    />
+                ))}
+            </Routes>
+        </div>
+    );
+};
+
 const App = () => {
     return (
         <BrowserRouter>
-            <div className='App_wrapper'>
-                <Footer numImages={images.length} />
-                <Routes>
-                    <Route path='/' element={<FeaturedPage />} />
-                    {CATEGORIES.map((cat) => (
-                        <Route
-                            key={cat.path}
-                            path={cat.path}
-                            element={<GalleryPage images={images} />}
-                        />
-                    ))}
-                </Routes>
-            </div>
+            <AppContent />
         </BrowserRouter>
     );
 };
