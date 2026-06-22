@@ -2,6 +2,8 @@
   padding-top: 120px;
   padding-left: 80px;
   padding-right: 80px;
+  min-height: 100vh;
+  overflow-y: auto;
 
   .GalleryPage_grid {
     columns: 3;
