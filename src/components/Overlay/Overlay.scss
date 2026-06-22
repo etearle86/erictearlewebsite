@@ -24,12 +24,12 @@
         font-size: 24px;
         letter-spacing: 2px;
         font-weight: bold;
-        color: #000;
+        color: #fff;
 
-        &.is-light {
-            color: #fff;
-        }
+        &.is-dark {
+            color: #000;
     }
+}
 
     .prev_section:hover > .Overlay_cursor::after {
         content: 'PREV';

@@ -25,7 +25,6 @@ const GalleryPage = ({ images }) => {
                         handlePrevClick={handlePrev}
                         handleCloseClick={handleClose}
                         handleNextClick={handleNext}
-                        currentImageSrc={images[selectedImage]}
                     />
                     <img src={images[selectedImage]} alt='' />
                 </div>
