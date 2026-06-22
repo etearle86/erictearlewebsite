@@ -15,25 +15,31 @@
         height: 100%;
     }
 
-   .Overlay_cursor {
-    position: absolute;
-    left: var(--left);
-    top: var(--top);
-    translate: -50% -110%;
-    user-select: none;
-    font-size: 24px;
-    letter-spacing: 2px;
-    font-weight: bold;
-    color: #000;
-}
+    .Overlay_cursor {
+        position: absolute;
+        left: var(--left);
+        top: var(--top);
+        translate: -50% -110%;
+        user-select: none;
+        font-size: 24px;
+        letter-spacing: 2px;
+        font-weight: bold;
+        color: #000;
+
+        &.is-light {
+            color: #fff;
+        }
+    }
 
     .prev_section:hover > .Overlay_cursor::after {
-    content: 'PREV';
-}
-.close_section:hover > .Overlay_cursor::after {
-    content: 'CLOSE';
-}
-.next_section:hover > .Overlay_cursor::after {
-    content: 'NEXT';
-}
+        content: 'PREV';
+    }
+
+    .close_section:hover > .Overlay_cursor::after {
+        content: 'CLOSE';
+    }
+
+    .next_section:hover > .Overlay_cursor::after {
+        content: 'NEXT';
+    }
 }

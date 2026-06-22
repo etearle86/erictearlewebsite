@@ -96,6 +96,7 @@ const Main = ({ images }) => {
                     handlePrevClick={handlePrevClick}
                     handleCloseClick={handleCloseClick}
                     handleNextClick={handleNextClick}
+                    currentImageSrc={images[currImgIdx]}
                 />
             )}
 
