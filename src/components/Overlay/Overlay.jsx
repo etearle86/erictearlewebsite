@@ -1,9 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Overlay.scss';
 
 const Overlay = ({ handlePrevClick, handleCloseClick, handleNextClick }) => {
     const [currCursorPos, setCurrCursorPos] = useState({ x: 0, y: 0 });
     const [isOverImage, setIsOverImage] = useState(false);
+
+    useEffect(() => {
+        const handleKeyDown = (ev) => {
+            if (ev.key === 'Escape') handleCloseClick();
+        };
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+    }, [handleCloseClick]);
 
     const handleMouseMove = (ev) => {
         setCurrCursorPos({ x: ev.clientX, y: ev.clientY });
